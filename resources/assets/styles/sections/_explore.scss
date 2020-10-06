@@ -1,0 +1,59 @@
+#explore {
+  position: relative;
+  padding-top: 2.5vw;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10vw;
+    width: 54vw;
+    bottom: 180px;
+    background-color: #f2f2f2;
+    z-index: -1;
+  }
+
+  .wp-block-group {
+    padding: 35px;
+    max-width: 800px;
+
+    @media (min-width: $laptop) {
+      margin-left: auto;
+      margin-right: 35%;
+    }
+  }
+
+  h2 {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 40vw;
+      background-color: $color-yellow;
+      right: 105%;
+      top: 15px;
+
+      @media (min-width: $tablet) {
+        top: 2vw;
+      }
+    }
+  }
+
+  figure {
+    margin: 2vw;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .wp-block-column:last-child {
+    figure {
+      @media (min-width: $small) {
+        transform: translateY(-14vw);
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+.wpcf7 {
+  .row {
+    display: block;
+
+    @media (min-width: $small) {
+      display: flex;
+    }
+  }
+
+  .field {
+    width: 100%;
+    padding: 10px;
+    flex: 1;
+    // border: solid;
+    text-align: left;
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 19px !important;
+    padding: 13px 10px;
+    border: none;
+    border-bottom: 1px solid #707070;
+    width: 100%;
+  }
+
+  textarea {
+    height: 100px;
+  }
+
+  input[type="checkbox"] {
+    width: auto;
+    margin-top: 7px;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  .wpcf7-list-item {
+    margin: 0;
+  }
+
+  .acceptance {
+    label {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .wpcf7-list-item-label {
+      display: block;
+      font-size: 10px;
+      line-height: 20px;
+    }
+  }
+
+  .submit-field {
+    text-align: center;
+  }
+
+  .wpcf7-submit {
+    max-width: 350px;
+    color: #fff;
+    padding: 15px;
+    background-color: #706f6f;
+    border: solid #706f6f 1px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: relative;
+
+    // &::after {
+    //   content: "";
+    //   width: 20px;
+    //   height: 20px;
+    //   position: absolute;
+    //   top: 12px;
+    //   left: 57%;
+    //   background: $color-yellow url(../images/arrow.png) no-repeat center;
+    //   transition: 0.3s;
+    // }
+
+    &:focus,
+    &:hover {
+      background-color: $color-yellow;
+      color: #706f6f;
+
+      &::after {
+        background-color: #706f6f;
+      }
+    }
+  }
+
+  .wpcf7-not-valid-tip,
+  .wpcf7-response-output {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}

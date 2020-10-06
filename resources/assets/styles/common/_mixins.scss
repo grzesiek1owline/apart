@@ -1,0 +1,30 @@
+$min-width: 768;
+$max-width: 1920;
+
+@mixin vwfs($font-size, $min-vw: $min-width, $max-vw: $max-width) {
+  & {
+    font-size: $min-vw / 100 * $font-size + px;
+
+    @media screen and (min-width: $min-vw + px) {
+      font-size: $font-size + vw;
+    }
+
+    @media screen and (min-width: $max-vw + px) {
+      font-size: $max-vw / 100 * $font-size + px;
+    }
+  }
+}
+
+@mixin vwlh($font-size, $min-vw: $min-width, $max-vw: $max-width) {
+  & {
+    line-height: $min-vw / 100 * $font-size + px;
+
+    @media screen and (min-width: $min-vw + px) {
+      line-height: $font-size + vw;
+    }
+
+    @media screen and (min-width: $max-vw + px) {
+      line-height: $max-vw / 100 * $font-size + px;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.c-heading {
+  text-align: center;
+
+  &__sub {
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 6px;
+    color: #dea935;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin-top: 2rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 83%;
+      top: 50%;
+      width: 3000px;
+      height: 1px;
+      display: block;
+      background-color: #dea935;
+    }
+  }
+}

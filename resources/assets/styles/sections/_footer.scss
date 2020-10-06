@@ -1,0 +1,62 @@
+#footer {
+  position: relative;
+  margin: 4vw 0 0;
+
+  .wp-block-group__inner-container {
+    padding: 10px 20px 0;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 1px;
+    top: 0;
+    left: 0;
+    // background-color: $color-yellow;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(222, 169, 53, 1) 50%,
+        rgba(112, 111, 111, 1) 50%
+      );
+    // background:
+    //   linear-gradient(
+    //     90deg,
+    //     rgba(222, 169, 53, 1) 50%,
+    //     rgba(112, 111, 111, 1) 50%
+    //   );
+  }
+
+  .wp-block-columns {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    display: block;
+
+    @media (min-width: $laptop) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .wp-block-column {
+    margin: 0;
+  }
+
+  a {
+    color: #706f6f;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: #000;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.c-icon {
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--pdf {
+    width: 25px;
+    height: 35px;
+    background-image: url("../images/pdf1.svg");
+  }
+}

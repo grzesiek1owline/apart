@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 250%;
+  font-weight: 300;
+  color: #212529;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+h1,
+h2 {
+  font-family: "DM Serif Text", serif;
+  font-weight: normal;
+  color: #706f6f;
+  line-height: 125%;
+  margin: 1.6vw 0;
+
+  @include vwfs(3.2);
+}
+
+strong {
+  font-weight: 500;
+}
+
+.tagline {
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: 6px;
+  color: $color-yellow;
+  font-weight: normal;
+}
+
+.more a {
+  display: inline-block;
+  color: #706f6f;
+  text-decoration: none;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 15px 0;
+  font-weight: normal;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 12px;
+    left: 107%;
+    background: $color-yellow url(../images/arrow.png) no-repeat center;
+    transition: 0.3s;
+  }
+
+  &:focus,
+  &:hover {
+    &::after {
+      background-color: #706f6f;
+    }
+  }
+}

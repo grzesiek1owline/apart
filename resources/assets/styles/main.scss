@@ -1,0 +1,42 @@
+@import "common/variables";
+
+/** Import everything from autoload */
+@import "./autoload/**/*";
+
+/**
+ * Import npm dependencies
+ *
+ * Prefix your imports with `~` to grab from node_modules/
+ * @see https://github.com/webpack-contrib/sass-loader#imports
+ */
+// @import "~some-node-module";
+@import "~swiper/swiper-bundle.min.css";
+@import "~magnific-popup/dist/magnific-popup.css";
+
+/** Import theme styles */
+@import "common/mixins";
+@import "common/global";
+@import "components/buttons";
+@import "components/comments";
+@import "components/forms";
+@import "components/heading";
+@import "components/table";
+@import "components/icon";
+@import "components/tabs";
+@import "components/wp-classes";
+@import "layouts/header";
+@import "layouts/grid";
+@import "layouts/sidebar";
+@import "layouts/pages";
+@import "layouts/posts";
+@import "layouts/tinymce";
+
+// Sections
+@import "sections/hero";
+@import "sections/explore";
+@import "sections/choose";
+@import "sections/why";
+@import "sections/photos";
+@import "sections/flats";
+@import "sections/contact";
+@import "sections/footer";

@@ -1,0 +1,49 @@
+#why {
+  padding-top: 4vw;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    background: url(../images/why.png) no-repeat center;
+    background-size: contain;
+    position: absolute;
+    top: -5vw;
+    left: -11vw;
+    width: 70vw;
+    height: 45vw;
+    z-index: -1;
+  }
+
+  h2 {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 100vw;
+      background-color: $color-yellow;
+      right: 120%;
+      top: 15px;
+
+      @media (min-width: $tablet) {
+        top: 2vw;
+      }
+    }
+  }
+
+  .wp-block-columns {
+    max-width: 860px;
+    margin: 30px auto;
+    padding: 0 30px;
+
+    .wp-block-column {
+      @media (min-width: $small) and (max-width: 781px) {
+        flex-basis: 100% !important;
+        margin: 0;
+      }
+    }
+  }
+}

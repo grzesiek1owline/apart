@@ -1,0 +1,47 @@
+#hero {
+  .logo {
+    max-width: 60%;
+    margin: 10px 0 4vw;
+  }
+
+  .wp-block-column:first-child {
+    width: 100%;
+    background-color: #fff;
+    padding: 2vw 5vw;
+
+    @media (min-width: $small) {
+      max-width: 40%;
+    }
+  }
+
+  .wp-block-column:last-child {
+    margin-left: 0;
+
+    @media (min-width: $small) {
+      flex-grow: 1;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .tagline {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 40vw;
+      background-color: $color-yellow;
+      top: 8px;
+      left: 150%;
+    }
+  }
+}
