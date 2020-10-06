@@ -148,12 +148,12 @@ function get_floors_info() {
                             $status = '<p style="color: green">Dostępne</p>';
                         endif;
                         $html .= '<tr>';
-                        $html .= '<td>'.$title.'</td>';
-                        $html .= '<td>'.$size.'</td>';
-                        $html .= '<td>'.$others.'</td>';
-                        $html .= '<td>'.$rooms.'</td>';
-                        $html .= '<td><a target="_blank" href="'.$pdf_url.'"></a><i class="c-icon c-icon--pdf"></i></td>';
-                        $html .= '<td>'.$status.'</td>';
+                        $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$title.'</a></td>';
+                        $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$size.'</a></td>';
+                        $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$others.'</a></td>';
+                        $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$rooms.'</a></td>';
+                        $html .= '<td><a target="_blank" href="'.$pdf_url.'"><i class="c-icon c-icon--pdf"></i></a></td>';
+                        $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$status.'</a></td>';
                         $html .= '</tr>';
                     }
                 }
