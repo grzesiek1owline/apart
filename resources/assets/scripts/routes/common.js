@@ -1,11 +1,20 @@
 import Swiper from 'swiper';
 import Tabs from './../components/tabs';
+import Floors from './../components/floors';
+import lightbox from 'lightbox2';
 
 export default {
   init() {
     // JavaScript to be fired on all pages
+    lightbox.option({
+      'resizeDuration': 400,
+    })
+
     const tabs = new Tabs('[data-tab-wrapper]','[data-tab-menu]');
     tabs.init();
+
+    const floors = new Floors();
+    floors.init();
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired

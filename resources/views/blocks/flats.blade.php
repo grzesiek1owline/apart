@@ -34,7 +34,6 @@
                 <th>Liczba pokoi</th>
                 <th>Piętro</th>
                 <th>Plan PDF</th>
-                <th>Cena</th>
                 <th>Status</th>
               </tr>
              </thead>
@@ -49,9 +48,10 @@
                 $id = get_the_ID();
               @endphp
               <tr>
-                <td>{{ get_the_title() }}</td>
-                <td>{{ get_field('flat-size', $id) }}</td>
+                <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_the_title() }}</a></td>
+                <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-size', $id) }}</a></td>
                 <td>
+                  <a target="_blank" href="{{ $pdf['url'] }}">
                   @php
                     $others = get_field('flat-others-size', $id);
                     if($others) {
@@ -60,27 +60,26 @@
                       echo '-';
                     }
                   @endphp
+                  </a>
                 </td>
-                <td>{{ get_field('flat-rooms', $id) }}</td>
-                <td>
-                  @php
-                    $term_obj_list = get_the_terms( $id, 'floor' );
-                    echo $term_obj_list[0] -> name;
-                  @endphp
-                </td>
+                <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-rooms', $id) }}</a></td>
+                <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-floor', $id) }}</a></td>
                 <td>
                   @php
                     $pdf = get_field('flat-pdf', $id);
                   @endphp
-                  <a href="{{ $pdf['url'] }}"><i class="c-icon c-icon--pdf"></i></a>
+                  <a target="_blank" href="{{ $pdf['url'] }}">
+                  <i class="c-icon c-icon--pdf"></i>
+                  </a>
                 </td>
-                <td>{{ get_field('flat-price', $id) }}</td>
                 <td>
+                  <a target="_blank" href="{{ $pdf['url'] }}">
                   @if(get_field('flat-status', $id))
                     <p style="color: red">Sprzedane</p>
                   @else
                     <p style="color: green">Dostępne</p>
                   @endif
+                  </a>
                 </td>
               </tr>
               @endposts
@@ -88,7 +87,28 @@
           </table>
         </div>
         <div class="c-tab" data-tab-name="{{ get_field('flat-list-hash-2') }}">
-ddd
+          <form class="c-flat-form" action="">
+            @query([
+              'post_type' => 'buildings',
+              'posts_per_page' => -1,
+              'post_status' => 'publish'
+            ])
+            <select name="building" id="building">
+              <option value="" disabled selected>Wybierz budynek</option>
+            @posts
+              <option value="{{ get_the_ID() }}">@title</option>
+            @endposts
+            </select>
+            <select name="floor" id="floor" disabled>
+              <option value="" disabled selected>Wybierz piętro</option>
+            </select>
+          </form>
+          <div class="l-flats-floors">
+            <div class="loader3" id="floors-loader"><span></span><span></span></div>
+            <div id="floors-wrapper">
+
+            </div>
+          </div>
         </div>
       </div>
     </div>

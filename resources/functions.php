@@ -92,3 +92,109 @@ Container::getInstance()
     }, true);
 
 add_image_size( 'gallery', 410, 488, true );
+
+
+// AJAX
+
+function get_floors_select() {
+    $id =  $_POST[budynek]['id'];
+    $html = '';
+    global $post;
+    if( have_rows('bulding-flats', $id) ):
+        while( have_rows('bulding-flats', $id) ):
+            the_row();
+            $html .= '<option value="'. get_sub_field('name') .'">'. get_sub_field('name') .'</option>';
+        endwhile;
+    else:
+        $html = 'error';
+    endif;
+
+    echo $html;
+    wp_die();
+}
+
+function get_floors_info() {
+    $value = $_POST[data]['value'];
+    $id = $_POST[data]['id'];
+    $template = floor_template();
+    $html = '';
+    $file_url = '';
+
+    if( have_rows('bulding-flats', $id) ):
+        while( have_rows('bulding-flats', $id) ):
+            the_row();
+            $name = get_sub_field('name');
+            if($name == $value) {
+                $file = get_sub_field('plan');
+                $file_url = $file['url'];
+                $flats = get_sub_field('flats');
+
+                if($flats) {
+                    foreach($flats as $id) {
+                        $title = get_the_title($id);
+                        $size = get_field('flat-size', $id);
+                        $others = get_field('flat-others-size', $id);
+                        if(!$others) {
+                            $others = '-';
+                        }
+                        $rooms = get_field('flat-rooms', $id);
+                        $pdf = get_field('flat-pdf', $id);
+                        $pdf_url = $pdf['url'];
+                        $status = get_field('flat-status', $id);
+
+                        if(get_field('flat-status', $id)):
+                            $status = '<p style="color: red">Sprzedane</p>';
+                        else:
+                            $status = '<p style="color: green">Dostępne</p>';
+                        endif;
+                        $html .= '<tr>';
+                        $html .= '<td>'.$title.'</td>';
+                        $html .= '<td>'.$size.'</td>';
+                        $html .= '<td>'.$others.'</td>';
+                        $html .= '<td>'.$rooms.'</td>';
+                        $html .= '<td><a target="_blank" href="'.$pdf_url.'"></a><i class="c-icon c-icon--pdf"></i></td>';
+                        $html .= '<td>'.$status.'</td>';
+                        $html .= '</tr>';
+                    }
+                }
+
+                $out = str_replace('{{FLATS}}', $html, $template);
+                $out = str_replace('{{URL}}', $file_url, $out);
+                $out = str_replace('{{NAME}}', $value, $out);
+                echo $out;
+                break;
+                wp_die();
+            }
+        endwhile;
+    else:
+        $html = 'error';
+    endif;
+    wp_die();
+}
+
+function floor_template(){
+    return '<div class="c-floor">
+    <div class="c-floor__plan">
+    <a href="{{URL}}" data-lightbox="{{NAME}}">
+        <img src="{{URL}}" alt="{{NAME}}">
+    </a>
+    </div>
+    <div class="c-floor__table">
+      <table class="c-table">
+        <thead>
+          <tr>
+            <th>Lp.</th>
+            <th>Powierzchnia</th>
+            <th>Taras/Ogródek</th>
+            <th>Liczba pokoi</th>
+            <th>Plan PDF</th>
+            <th>Status</th>
+          </tr>
+         </thead>
+         <tbody>
+            {{FLATS}}
+         </tbody>
+      </table>
+    </div>
+  </div>';
+}

@@ -77,7 +77,9 @@
   },
   "dependencies": {
     "jquery": "^3.3.1",
+    "lightbox2": "^2.11.3",
     "magnific-popup": "^1.1.0",
+    "simplelightbox": "^2.2.2",
     "swiper": "^6.1.1"
   }
 }

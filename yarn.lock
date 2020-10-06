@@ -5387,6 +5387,11 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+lightbox2@^2.11.3:
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/lightbox2/-/lightbox2-2.11.3.tgz#057d9244badb0f0fd4603c25d739a19a85a71978"
+  integrity sha512-Q4v6il/OK9ttgEkAxSok/jrI/LUbqTrePFchqP2x/59qaDIZgJjEEc5Xf7peSMc/55Zo5PAgmX6EiN/BeEeUBQ==
+
 limiter@^1.0.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/limiter/-/limiter-1.1.5.tgz#8f92a25b3b16c6131293a0cc834b4a838a2aa7c2"
@@ -8563,6 +8568,11 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
+
+simplelightbox@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/simplelightbox/-/simplelightbox-2.2.2.tgz#886eb1bcbc6fba5ba190106bf207d30214d077c2"
+  integrity sha512-MnS1r2jSfAFKAFAJ1gW+IJaBmx55WoU5+0XWXhMT7Tfr+nPMu06dLPrJSx2L0LVChgBqd4oHEBr0d9AIlDgcyg==
 
 slash@^1.0.0:
   version "1.0.0"
