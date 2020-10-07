@@ -51,4 +51,8 @@
   justify-content: flex-start;
   align-items: center;
   margin: 1rem 0;
+
+  @media all and (max-width: 768px) {
+    justify-content: space-between;
+  }
 }

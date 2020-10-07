@@ -41,7 +41,9 @@
               @query([
               'post_type' => 'mieszkanie',
               'posts_per_page' => -1,
-              'post_status' => 'publish'
+              'post_status' => 'publish',
+              'orderby'=>'menu_order',
+              'order' => 'ASC'
               ])
               @posts
               @php
@@ -91,7 +93,9 @@
             @query([
             'post_type' => 'buildings',
             'posts_per_page' => -1,
-            'post_status' => 'publish'
+            'post_status' => 'publish',
+            'orderby'=>'menu_order',
+            'order' => 'ASC'
             ])
             <div class="c-select">
               <select name="building" id="building">
