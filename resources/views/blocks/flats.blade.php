@@ -30,78 +30,82 @@
               <tr>
                 <th>Lp.</th>
                 <th>Powierzchnia</th>
-                <th>Taras/Ogródek</th>
-                <th>Liczba pokoi</th>
+                <th>Taras / Ogródek</th>
+                <th>Pokoje</th>
                 <th>Piętro</th>
-                <th>Plan PDF</th>
+                <th>Plan</th>
                 <th>Status</th>
               </tr>
-             </thead>
-             <tbody>
+            </thead>
+            <tbody>
               @query([
-                'post_type' => 'mieszkanie',
-                'posts_per_page' => -1,
-                'post_status' => 'publish'
+              'post_type' => 'mieszkanie',
+              'posts_per_page' => -1,
+              'post_status' => 'publish'
               ])
               @posts
               @php
-                $id = get_the_ID();
+              $id = get_the_ID();
               @endphp
               <tr>
                 <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_the_title() }}</a></td>
-                <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-size', $id) }}</a></td>
+                <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-size', $id) }}m<sup>2</sup>@if(get_field('flat-antresola', $id)) {{ __('antresola','apart') }} @endif</a></td>
                 <td>
                   <a target="_blank" href="{{ $pdf['url'] }}">
-                  @php
+                    @php
                     $others = get_field('flat-others-size', $id);
                     if($others) {
-                      echo $others;
+                    echo $others . 'm<sup>2</sup>';
                     } else {
-                      echo '-';
+                    echo '-';
                     }
-                  @endphp
+                    @endphp
                   </a>
                 </td>
                 <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-rooms', $id) }}</a></td>
                 <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-floor', $id) }}</a></td>
                 <td>
                   @php
-                    $pdf = get_field('flat-pdf', $id);
+                  $pdf = get_field('flat-pdf', $id);
                   @endphp
                   <a target="_blank" href="{{ $pdf['url'] }}">
-                  <i class="c-icon c-icon--pdf"></i>
+                    <i class="c-icon c-icon--pdf"></i>
                   </a>
                 </td>
                 <td>
                   <a target="_blank" href="{{ $pdf['url'] }}">
-                  @if(get_field('flat-status', $id))
-                    <p style="color: red">Sprzedane</p>
-                  @else
-                    <p style="color: green">Dostępne</p>
-                  @endif
+                    @if(get_field('flat-status', $id))
+                    <p style="color: red">{{ __('Sprzedane','apart') }}</p>
+                    @else
+                    <p style="color: green">{{ __('Dostępne','apart') }}</p>
+                    @endif
                   </a>
                 </td>
               </tr>
               @endposts
-             </tbody>
+            </tbody>
           </table>
         </div>
         <div class="c-tab" data-tab-name="{{ get_field('flat-list-hash-2') }}">
           <form class="c-flat-form" action="">
             @query([
-              'post_type' => 'buildings',
-              'posts_per_page' => -1,
-              'post_status' => 'publish'
+            'post_type' => 'buildings',
+            'posts_per_page' => -1,
+            'post_status' => 'publish'
             ])
-            <select name="building" id="building">
-              <option value="" disabled selected>Wybierz budynek</option>
-            @posts
-              <option value="{{ get_the_ID() }}">@title</option>
-            @endposts
-            </select>
-            <select name="floor" id="floor" disabled>
-              <option value="" disabled selected>Wybierz piętro</option>
-            </select>
+            <div class="c-select">
+              <select name="building" id="building">
+                <option value="" disabled selected>Wybierz budynek</option>
+                @posts
+                <option value="{{ get_the_ID() }}">@title</option>
+                @endposts
+              </select>
+            </div>
+            <div class="c-select">
+              <select name="floor" id="floor" disabled>
+                <option value="" disabled selected>Wybierz piętro</option>
+              </select>
+            </div>
           </form>
           <div class="l-flats-floors">
             <div class="loader3" id="floors-loader"><span></span><span></span></div>

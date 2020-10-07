@@ -101,6 +101,7 @@ function get_floors_select() {
     $html = '';
     global $post;
     if( have_rows('bulding-flats', $id) ):
+        $html .= '<option value="" disabled selected>Wybierz piętro</option>';
         while( have_rows('bulding-flats', $id) ):
             the_row();
             $html .= '<option value="'. get_sub_field('name') .'">'. get_sub_field('name') .'</option>';
@@ -133,9 +134,17 @@ function get_floors_info() {
                     foreach($flats as $id) {
                         $title = get_the_title($id);
                         $size = get_field('flat-size', $id);
+                        $antresola = get_field('flat-antresola', $id);
+                        if($antresola) {
+                            $antresola = __('antresola', 'apart');
+                        } else {
+                            $antresola = '';
+                        }
                         $others = get_field('flat-others-size', $id);
                         if(!$others) {
                             $others = '-';
+                        } else {
+                            $others .= 'm<sup>2</sup>';
                         }
                         $rooms = get_field('flat-rooms', $id);
                         $pdf = get_field('flat-pdf', $id);
@@ -149,7 +158,7 @@ function get_floors_info() {
                         endif;
                         $html .= '<tr>';
                         $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$title.'</a></td>';
-                        $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$size.'</a></td>';
+                        $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$size.'m<sup>2</sup> '.$antresola.'</a></td>';
                         $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$others.'</a></td>';
                         $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$rooms.'</a></td>';
                         $html .= '<td><a target="_blank" href="'.$pdf_url.'"><i class="c-icon c-icon--pdf"></i></a></td>';
@@ -185,9 +194,9 @@ function floor_template(){
           <tr>
             <th>Lp.</th>
             <th>Powierzchnia</th>
-            <th>Taras/Ogródek</th>
-            <th>Liczba pokoi</th>
-            <th>Plan PDF</th>
+            <th>Taras / Ogródek</th>
+            <th>Pokoje</th>
+            <th>Plan</th>
             <th>Status</th>
           </tr>
          </thead>

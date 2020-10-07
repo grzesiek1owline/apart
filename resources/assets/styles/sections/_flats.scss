@@ -2,6 +2,10 @@
   padding: 6rem 0;
   min-height: 30vh;
   font-size: 1rem;
+
+  @media all and (max-width: 768px) {
+    font-size: 0.825rem;
+  }
 }
 
 .l-flats-floors {
@@ -17,7 +21,7 @@
   &__plan {
     flex: 1 0 400px;
     margin-bottom: 2rem;
-    padding: 0 1rem;
+    overflow: hidden;
 
     a {
       cursor: zoom-in;
@@ -33,6 +37,18 @@
   &__table {
     flex: 1 0 500px;
     font-size: 0.825rem;
-    overflow: hidden;
+    padding-left: 1.5rem;
+    // overflow: auto;
+
+    @media all and (max-width: 768px) {
+      padding-left: 0;
+    }
   }
+}
+
+.c-flat-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem 0;
 }
