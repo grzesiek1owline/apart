@@ -48,6 +48,7 @@
               @posts
               @php
               $id = get_the_ID();
+              $pdf = get_field('flat-pdf', $id);
               @endphp
               <tr>
                 <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_the_title() }}</a></td>
@@ -67,9 +68,6 @@
                 <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-rooms', $id) }}</a></td>
                 <td><a target="_blank" href="{{ $pdf['url'] }}">{{ get_field('flat-floor', $id) }}</a></td>
                 <td>
-                  @php
-                  $pdf = get_field('flat-pdf', $id);
-                  @endphp
                   <a target="_blank" href="{{ $pdf['url'] }}">
                     <i class="c-icon c-icon--pdf"></i>
                   </a>
