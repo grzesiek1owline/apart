@@ -75,9 +75,9 @@
                 <td>
                   <a target="_blank" href="{{ $pdf['url'] }}">
                     @if(get_field('flat-status', $id))
-                    <p style="color: red">{{ __('Sprzedane','apart') }}</p>
+                    <p style="color: red">{{ __('Zajęte','apart') }}</p>
                     @else
-                    <p style="color: green">{{ __('Dostępne','apart') }}</p>
+                    <p style="color: green">{{ __('Wolne','apart') }}</p>
                     @endif
                   </a>
                 </td>

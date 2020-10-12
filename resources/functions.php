@@ -152,9 +152,9 @@ function get_floors_info() {
                         $status = get_field('flat-status', $id);
 
                         if(get_field('flat-status', $id)):
-                            $status = '<p style="color: red">Sprzedane</p>';
+                            $status = '<p style="color: red">Zajęte</p>';
                         else:
-                            $status = '<p style="color: green">Dostępne</p>';
+                            $status = '<p style="color: green">Wolne</p>';
                         endif;
                         $html .= '<tr>';
                         $html .= '<td><a target="_blank" href="'.$pdf_url.'">'.$title.'</a></td>';
